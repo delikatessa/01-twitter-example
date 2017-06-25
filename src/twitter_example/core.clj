@@ -41,10 +41,10 @@
 ; In profiles.clj we defined the "env(ironment)" which we use here
 ; to get the secret passwords we need.
 ; Make sure you add your credentials in profiles.clj and not here!
-(def twitter-credentials (twitter-oauth/make-oauth-creds (env :app-consumer-key)
-                                                         (env :app-consumer-secret)
-                                                         (env :user-access-token)
-                                                         (env :user-access-secret)))
+(def twitter-credentials (twitter-oauth/make-oauth-creds $TWITTER_API_KEY 
+                                                         $TWITTER_API_SECRET
+                                                         $TWITTER_ACCESS_TOKEN
+                                                         $TWITTER_ACCESS_TOKEN_SECRET))
 
 ; Tweets are limited to 140 characters. We might randomly generate a sentence
 ; with more than 140 characters, which would be rejected by Twitter.
